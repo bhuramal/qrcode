@@ -2,193 +2,254 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Our Products & Manufacturers</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Products & Manufacturers</title>
     <style>
         :root {
             --primary-color: #0056b3;
             --secondary-color: #495057;
-            --background-color: #f8f9fa;
+            --background-color: #f4f7f9;
             --card-background: #fff;
             --text-color: #212529;
-            --border-radius: 8px;
-            --box-shadow: 0 0.2rem 0.4rem rgba(0, 0, 0, 0.05);
+            --light-text-color: #6c757d;
+            --border-radius: 12px;
+            --box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.08);
             --divider-color: #e9ecef;
-            --spacing-sm: 8px;
-            --spacing-md: 16px;
-            --spacing-lg: 24px;
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
             margin: 0;
             background-color: var(--background-color);
             color: var(--text-color);
             line-height: 1.6;
-            padding: var(--spacing-lg);
+            padding: 3rem 0;
         }
 
         .container {
-            max-width: 960px;
+            width: 100%;
+            padding: 0 3rem;
+            box-sizing: border-box;
             margin: 0 auto;
         }
 
-        h1 {
+        .main-header {
             text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .main-header h1 {
             color: var(--primary-color);
-            margin-bottom: var(--spacing-lg);
-            font-size: 2.2em;
+            font-size: 2.5em;
+            margin: 0;
+        }
+
+        .main-header p {
+            color: var(--light-text-color);
+            font-size: 1.1em;
+            margin-top: 0.5rem;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
         }
 
         .product-item {
             background-color: var(--card-background);
             border-radius: var(--border-radius);
             box-shadow: var(--box-shadow);
-            padding: var(--spacing-md);
-            margin-bottom: var(--spacing-lg);
-            border-left: 6px solid var(--primary-color);
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .product-item:last-child {
-            margin-bottom: 0;
+        .product-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0.8rem 1.5rem rgba(0, 0, 0, 0.12);
         }
 
         .product-header {
             display: flex;
             align-items: center;
-            margin-bottom: var(--spacing-md);
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--divider-color);
         }
 
         .product-icon {
             font-size: 2em;
-            margin-right: var(--spacing-md);
-            color: var(--secondary-color);
+            margin-right: 1rem;
+            color: var(--primary-color);
         }
-
+        
         .product-name {
-            font-size: 1.5em;
-            font-weight: bold;
+            font-size: 1.6em;
+            font-weight: 600;
             color: var(--text-color);
             margin: 0;
-            flex-grow: 1;
         }
 
         .manufacturer-details {
-            font-size: 1em;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .manufacturer-card {
+            padding: 1rem;
+            border-left: 4px solid var(--primary-color);
+            background-color: #f9fafb;
+            border-radius: 8px;
+        }
+
+        .manufacturer-card.sub-card {
+            border-left-color: #6c757d;
+        }
+
+        .manufacturer-card h3 {
+            font-size: 1.2em;
+            margin: 0 0 0.5rem 0;
             color: var(--secondary-color);
-            margin-top: var(--spacing-md);
-            line-height: 1.5;
         }
 
-        .manufacturer-details p {
-            margin-bottom: var(--spacing-sm);
+        .manufacturer-card p {
+            margin: 0;
+            font-size: 0.95em;
+            color: var(--light-text-color);
         }
 
-        .manufacturer-details p:last-child {
-            margin-bottom: 0;
+        .manufacturer-card a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
         }
 
-        hr {
-            border: 0;
-            border-top: 1px solid var(--divider-color);
-            margin: var(--spacing-lg) 0;
+        .manufacturer-card a:hover {
+            text-decoration: underline;
         }
 
-        .fssai-logo-container {
+        .fssai-info {
+            font-weight: 600;
+            margin-top: 0.5rem;
             display: flex;
             align-items: center;
         }
 
-        .fssai-logo {
-            height: 28px;
-            vertical-align: middle;
-            margin-right: var(--spacing-sm);
+        .fssai-info::before {
+            content: '✓';
+            color: var(--primary-color);
+            margin-right: 8px;
+            font-size: 1.2em;
         }
 
-        /* Responsive adjustments */
+        /* Responsive Styles */
         @media (max-width: 768px) {
-            h1 {
+            body {
+                padding: 1.5rem 0;
+            }
+
+            .container {
+                padding: 0 1.5rem;
+            }
+
+            .main-header {
+                margin-bottom: 2rem;
+            }
+
+            .main-header h1 {
                 font-size: 2em;
-                margin-bottom: var(--spacing-md);
             }
 
-            .product-header {
-                flex-direction: column;
-                align-items: flex-start;
+            .products-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
             }
-
-            .product-icon {
-                font-size: 1.8em;
-                margin-right: 0;
-                margin-bottom: var(--spacing-sm);
+            
+            .product-item {
+                padding: 1.5rem;
             }
-
+            
             .product-name {
-                font-size: 1.3em;
-            }
-
-            .fssai-logo {
-                height: 22px;
+                font-size: 1.4em;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Our Products & Manufacturers</h1>
-        <div class="product-item">
-            <div class="product-header">
-                <div class="product-icon">🌻</div>
-                <h2 class="product-name">Premium Mustard Oil</h2>
-            </div>
-            <div class="manufacturer-details">
-                <p><strong>(VKI) Bansal Oil Mill Limited</strong></p>
-                <p>G-834(A) Road No. 14, V.K.I. Area, Jaipur-302013, Rajasthan (INDIA)</p>
-                <p class="fssai-logo-container"><img src="assets/fssai_logo.png" alt="FSSAI Logo" class="fssai-logo"> License No: 10012013000270</p>
-                <hr>
-                <p><strong>(MWC) Bansal Oil Mill Limited Unit-11</strong></p>
-                <p>DTA-02-18, Domestic Tariff Area Phase-I</p>
-                <p>P.O. Mahindra World City, Tehsil Sanganer, Jaipur-303007, Rajasthan (INDIA)</p>
-                <p class="fssai-logo-container"><img src="assets/fssai_logo.png" alt="FSSAI Logo" class="fssai-logo"> License No: 12221999000083</p>
-            </div>
-        </div>
+        <header class="main-header">
+            <h1>Our Products & Manufacturers</h1>
+            <p>A list of our premium products and the trusted manufacturers who produce them.</p>
+        </header>
 
-        <div class="product-item">
-            <div class="product-header">
-                <div class="product-icon">🥜</div>
-                <h2 class="product-name">Pure Ground Nut Oil</h2>
-            </div>
-            <div class="manufacturer-details">
-                <p><strong>Vinod Agro Industries Private Limited</strong></p>
-                <p>KHASRA No. 8 & 16, Gran-BASI SAHEJBARDAN, Bikaner, Rajasthan-334601</p>
-                <p class="fssai-logo-container"><img src="assets/fssai_logo.png" alt="FSSAI Logo" class="fssai-logo"> License No: 1001013000699</p>
-            </div>
-        </div>
+        <section class="products-grid">
 
-        <div class="product-item">
-            <div class="product-header">
-                <div class="product-icon">🧈</div>
-                <h2 class="product-name">Traditional Ghee</h2>
+            <div class="product-item">
+                <div class="product-header">
+                    <span class="product-icon">🌻</span>
+                    <h2 class="product-name">Premium Mustard Oil</h2>
+                </div>
+                <div class="manufacturer-details">
+                    <div class="manufacturer-card">
+                        <h3>(VKI) Bansal Oil Mill Limited</h3>
+                        <p>G-834(A) Road No. 14, V.K.I. Area, Jaipur-302013, Rajasthan (INDIA)</p>
+                        <p class="fssai-info">FSSAI License No: 10012013000270</p>
+                    </div>
+                    <div class="manufacturer-card sub-card">
+                        <h3>(MWC) Bansal Oil Mill Limited Unit-11</h3>
+                        <p>DTA-02-18, Domestic Tariff Area Phase-I, P.O. Mahindra World City, Tehsil Sanganer, Jaipur-303007, Rajasthan (INDIA)</p>
+                        <p class="fssai-info">FSSAI License No: 12221999000083</p>
+                    </div>
+                </div>
             </div>
-            <div class="manufacturer-details">
-                <p><strong>Arvind Dairy Private Limited</strong></p>
-                <p>Masuri - Gulaothi Road, Dhaulana Dist. Hapur (UP) 245101</p>
-                <p>Website: <a href="http://www.arvinddairy.com"  style="color: var(--primary-color); text-decoration: none;">www.arvinddairy.com</a></p>
-                <p class="fssai-logo-container"><img src="assets/fssai_logo.png" alt="FSSAI Logo" class="fssai-logo"> License No: 12722999000615</p>
-            </div>
-        </div>
 
-        <div class="product-item">
-            <div class="product-header">
-                <div class="product-icon">🏭</div>
-                <h2 class="product-name">Manufacturing Unit</h2>
+            <div class="product-item">
+                <div class="product-header">
+                    <span class="product-icon">🥜</span>
+                    <h2 class="product-name">Pure Ground Nut Oil</h2>
+                </div>
+                <div class="manufacturer-details">
+                    <div class="manufacturer-card">
+                        <h3>Vinod Agro Industries Private Limited</h3>
+                        <p>KHASRA No. 8 & 16, Gran-BASI SAHEJBARDAN, Bikaner, Rajasthan-334601</p>
+                        <p class="fssai-info">FSSAI License No: 1001013000699</p>
+                    </div>
+                </div>
             </div>
-            <div class="manufacturer-details">
-                <p><strong>Adinath Agro Products</strong></p>
-                <p>PLOT NO. B-05,B-06,B-07, VILLAGE DHONALAI, CHOMU, Jaipur, Rajasthan-303712</p>
-                <p class="fssai-logo-container"><img src="assets/fssai_logo.png" alt="FSSAI Logo" class="fssai-logo"> License No: 12225026000354</p>
+
+            <div class="product-item">
+                <div class="product-header">
+                    <span class="product-icon">🧈</span>
+                    <h2 class="product-name">Traditional Ghee</h2>
+                </div>
+                <div class="manufacturer-details">
+                    <div class="manufacturer-card">
+                        <h3>Arvind Dairy Private Limited</h3>
+                        <p>Masuri - Gulaothi Road, Dhaulana Dist. Hapur (UP) 245101</p>
+                        <p>Website: <a href="http://www.arvinddairy.com" target="_blank">www.arvinddairy.com</a></p>
+                        <p class="fssai-info">FSSAI License No: 12722999000615</p>
+                    </div>
+                </div>
             </div>
-        </div>
+
+            <div class="product-item">
+                <div class="product-header">
+                    <span class="product-icon">🏭</span>
+                    <h2 class="product-name">Manufacturing Unit</h2>
+                </div>
+                <div class="manufacturer-details">
+                    <div class="manufacturer-card">
+                        <h3>Adinath Agro Products</h3>
+                        <p>PLOT NO. B-05,B-06,B-07, VILLAGE DHONALAI, CHOMU, Jaipur, Rajasthan-303712</p>
+                        <p class="fssai-info">FSSAI License No: 12225026000354</p>
+                    </div>
+                </div>
+            </div>
+
+        </section>
     </div>
 </body>
 </html>
