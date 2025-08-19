@@ -73,10 +73,33 @@
 
         .product-header {
             display: flex;
-            align-items: center;
-            margin-bottom: 1.5rem;
+            flex-direction: column;
+            align-items: flex-start; /* Changed to left-align children */
             padding-bottom: 1rem;
             border-bottom: 1px solid var(--divider-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .product-info {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+
+        .product-label {
+            align-self: center; /* Re-centers the label within the flex container */
+            background-color: var(--primary-color);
+            border-radius: 8px;
+            padding: 0.4rem 1.2rem;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+        }
+
+        .product-label h1 {
+            font-size: 1.1em;
+            font-weight: 700; /* Made text bolder */
+            color: var(--card-background); /* White text */
+            margin: 0;
         }
 
         .product-icon {
@@ -189,8 +212,13 @@
 
             <div class="product-item">
                 <div class="product-header">
-                    <span class="product-icon">🌻</span>
-                    <h2 class="product-name">Premium Mustard Oil</h2>
+                    <div class="product-label">
+                        <h1>(BO)</h1>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-icon">🌻</span>
+                        <h2 class="product-name">Premium Mustard Oil</h2>
+                    </div>
                 </div>
                 <div class="manufacturer-details">
                     <div class="manufacturer-card">
@@ -208,8 +236,13 @@
 
             <div class="product-item">
                 <div class="product-header">
-                    <span class="product-icon">🥜</span>
-                    <h2 class="product-name">Pure Ground Nut Oil</h2>
+                    <div class="product-label">
+                        <h1>(VA)</h1>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-icon">🥜</span>
+                        <h2 class="product-name">Pure Ground Nut Oil</h2>
+                    </div>
                 </div>
                 <div class="manufacturer-details">
                     <div class="manufacturer-card">
@@ -222,8 +255,13 @@
 
             <div class="product-item">
                 <div class="product-header">
-                    <span class="product-icon">🧈</span>
-                    <h2 class="product-name">Traditional Ghee</h2>
+                    <div class="product-label">
+                        <h1>(AD)</h1>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-icon">🧈</span>
+                        <h2 class="product-name">Traditional Ghee</h2>
+                    </div>
                 </div>
                 <div class="manufacturer-details">
                     <div class="manufacturer-card">
@@ -237,8 +275,13 @@
 
             <div class="product-item">
                 <div class="product-header">
-                    <span class="product-icon">🏭</span>
-                    <h2 class="product-name">Manufacturing Unit</h2>
+                    <div class="product-label">
+                        <h1>(AA)</h1>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-icon">🏭</span>
+                        <h2 class="product-name">Manufacturing Unit</h2>
+                    </div>
                 </div>
                 <div class="manufacturer-details">
                     <div class="manufacturer-card">
